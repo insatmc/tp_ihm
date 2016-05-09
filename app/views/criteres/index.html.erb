@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Criteres</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Label</th>
+      <th>Auteur</th>
+      <th>Catogrie</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @criteres.each do |critere| %>
+      <tr>
+        <td><%= critere.label %></td>
+        <td><%= critere.auteur %></td>
+        <td><%= critere.catogrie %></td>
+        <td><%= link_to 'Show', critere %></td>
+        <td><%= link_to 'Edit', edit_critere_path(critere) %></td>
+        <td><%= link_to 'Destroy', critere, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Critere', new_critere_path %>

@@ -1,0 +1,47 @@
+<%= form_for(@critere) do |f| %>
+  <% if @critere.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@critere.errors.count, "error") %> prohibited this critere from being saved:</h2>
+
+      <ul>
+      <% @critere.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :label %><br>
+    <%= f.text_field :label %>
+  </div>
+
+   <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+
+  <div class="field">
+    <%= f.label :auteur_id %><br>
+    <%= f.text_field :auteur_id %>
+  </div>
+  <div class="field">
+    <%= f.label :catogrie_id %><br>
+    <%= f.text_field :catogrie_id %>
+  </div>
+  <div>
+    <label>Plateform</label><br>
+    <input name="plateform">
+  </div>
+  <div>
+    <label>Domaine</label><br>
+    <input name="domaine">
+  </div>
+  <div>
+    <label>Style Interaction</label><br>
+    <input name="style_interaction">
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

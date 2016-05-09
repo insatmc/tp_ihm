@@ -1,0 +1,2 @@
+module PlateformsHelper
+end

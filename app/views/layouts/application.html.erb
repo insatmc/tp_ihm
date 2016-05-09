@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+<head>
+  <title>Tp1Ihm</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body ng-controller="ctrl">
+
+  <div class="left-side">
+    <h1>Recherche</h1>
+    <div class="group">
+      <input type="checkbox" ng-click="selectAll()"> select All
+    </div>
+    <div class="group">
+      <h2>Auteurs</h2>
+      <article ng-repeat="auteur in auteurs">
+        <input type="checkbox" value="{{auteur.auteur}}" class="checkbox auteurs-checkbox" ng-click="checkAuteurs()"> {{ auteur.auteur }}
+      </article>
+    </div>
+    <div class="group">
+      <h2>Plateforms</h2>
+      <article ng-repeat="e in plateforms">
+        <input type="checkbox" value="{{e.label}}" class="checkbox plateform-checkbox" ng-click="checkPlateforms()"> {{ e.label }}
+      </article>
+    </div>
+    <div class="group">
+      <h2>Domaines</h2>
+      <article ng-repeat="e in domaines">
+        <input type="checkbox" value="{{e.label}}" class="checkbox domaine-checkbox" ng-click="checkDomaines()"> {{ e.label }}
+      </article>
+    </div>
+    <div class="group">
+      <h2>Style Interaction</h2>
+      <article ng-repeat="e in styles">
+        <input type="checkbox" value="{{e.label}}" class="checkbox style-checkbox" ng-click="checkStyles()"> {{ e.label }}
+      </article>
+    </div>
+  </div>
+  <div class="right-side">
+    <input class="search" placeholder="Recherche.." ng-model="search.label">
+    <article ng-repeat="catagorie in catagories | filter: catagorieFilter">
+      <h1>{{ catagorie.label }}</h1>
+      <div class="criteres">
+        <article ng-repeat="critere in catagorie.criteres | filter: filterCriteres | filter: search">
+          <header class="critereName"> 
+            <h3>
+              <input type="checkbox">{{ critere.label }}
+              <span ng-click="showcontent(critere.label)">details</span>
+            </h3>
+          </header>
+
+          <div class="critere {{ contentShow[critere.label] }} ">
+            <header>
+              <div class="tab {{ descActive[critere.label] }} description-tab"
+                   ng-click="showDesc(critere.label)">
+                <b>Description</b>
+              </div>
+              <div class="tab {{ questActive[critere.label] }} question-tab" ng-click="showQuest(critere.label)">
+                <b>Questions</b>
+              </div>
+            </header>
+            <div class="content ">
+              <div class="description {{ descShow[critere.label] }}">
+                {{ critere.description }}
+              </div>
+              <div class="questions {{ questShow[critere.label] }}">
+                <article class="question" ng-repeat="question in critere.questions">
+                  {{ question.content }}
+                </article>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </article>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,2 @@
+module StyleInteractionsHelper
+end

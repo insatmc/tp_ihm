@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Plateforms</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Label</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @plateforms.each do |plateform| %>
+      <tr>
+        <td><%= plateform.label %></td>
+        <td><%= link_to 'Show', plateform %></td>
+        <td><%= link_to 'Edit', edit_plateform_path(plateform) %></td>
+        <td><%= link_to 'Destroy', plateform, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Plateform', new_plateform_path %>
